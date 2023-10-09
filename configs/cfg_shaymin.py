@@ -1,5 +1,5 @@
 # Timings
-GAME_LOADING_TIME = 32      # Game loading time [s]
+GAME_LOADING_TIME = 1      # Game loading time [s]
 BATTLE_LOADING_TIME = 11.7  # Battle loading time [s]
 
 
@@ -18,9 +18,8 @@ LOOP {}
 """
 
 RUN_FROM_BATTLE = """
-LOOP 3
-    DPAD_DOWN 0.1s
-    0.1s
+DPAD_UP 0.1s
+0.1s
 A 0.1s
 """
 
@@ -31,8 +30,8 @@ L_STICK@+000+100 3.1s
 """
 
 RESET_GAME = f"""
-{BUSY_WAIT_B.format(4 * 5)}
+{BUSY_WAIT_B.format(6 * 5)}
 {RUN_FROM_BATTLE}
-{BUSY_WAIT_B.format(4.5 * 5)}
+{BUSY_WAIT_B.format(5 * 5)}
 {RELOAD_MAP}
 """
