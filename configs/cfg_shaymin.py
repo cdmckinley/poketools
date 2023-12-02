@@ -26,7 +26,7 @@ A 0.1s
 RELOAD_MAP = """
 L_STICK@+000-100 3.1s
 0.1s
-L_STICK@+000+100 3.1s
+L_STICK@+000+100 3.2s
 """
 
 RESET_GAME = f"""
