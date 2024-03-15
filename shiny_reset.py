@@ -7,6 +7,7 @@ from utils import audio
 from utils.controller import Controller
 import argparse
 from configs import general
+import signal
 import utils.notification as notification
 
 
@@ -57,6 +58,17 @@ if __name__ == "__main__":
     # Confirm audio device exists
     if args.device:
         audio.assign_device(args.device)
+
+    # Set up graceful exit
+    def notify_and_exit(signum, _frame):
+        message=f"Stopped program after {number_of_resets} resets. " \
+                 f"Signal: {signal.Signals(signum).name}, ({signum})."
+        notification.post(args.notify, message)
+        print(message)
+        exit(0)
+
+    signal.signal(signal.SIGINT, notify_and_exit)
+    signal.signal(signal.SIGTERM, notify_and_exit)
 
     # Initialize and connect virtual game controller, then go back to game
     controller = Controller()
