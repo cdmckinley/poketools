@@ -7,6 +7,7 @@ from utils import audio
 from utils.controller import Controller
 import argparse
 from configs import general
+import utils.notification as notification
 
 
 # Configuration variables
@@ -73,7 +74,8 @@ if __name__ == "__main__":
         controller.busy_wait_background(REC_DURATION)
         is_shiny, correlation = audio.record_and_check_shiny(SHINY_AUDIO_FILE, REC_DURATION)
         if is_shiny:
-            print(f"Shiny found after {number_of_resets} resets.")
+            message=f"Shiny found after {number_of_resets} resets."
+            print(message)
             # Shiny ! Put console in sleep mode
             if args.capture == "video": 
                 controller.macro(general.VIDEO)
@@ -81,6 +83,8 @@ if __name__ == "__main__":
             elif args.capture == "screenshot":
                 controller.macro(general.SCREENSHOT)
             controller.macro(general.SLEEP_MODE)
+            if args.notify is not None:
+                    notification.post(args.notify, message)
             if args.plot_correlation:
                 audio.save_plot(correlation, f"{script_directory}/correlation.png")
             exit(0)
