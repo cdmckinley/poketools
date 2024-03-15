@@ -45,7 +45,7 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--device", help=help)
     help = "Use this flag to post to ntfy.sh, pushing a notification to the specified topic. " \
            "Example: using \"https://ntfy.sh/reallylongexampletopic\" will have ntfy push to \"reallylongexampletopic\"."
-    parser.add_argument("-n", "--notify", help=help, default=null)
+    parser.add_argument("-n", "--notify", help=help)
     args = parser.parse_args()
     config = getattr(__import__("configs", fromlist=[f"cfg_{args.scenario}"]), f"cfg_{args.scenario}")
 
