@@ -43,6 +43,9 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--plot-correlation", help=help, action="store_true")
     help = "Select an audio input device by its name. Audio devices can be listed with `python3 -m sounddevice`."
     parser.add_argument("-d", "--device", help=help)
+    help = "Use this flag to post to ntfy.sh, pushing a notification to the specified topic. " \
+           "Example: using \"https://ntfy.sh/reallylongexampletopic\" will have ntfy push to \"reallylongexampletopic\"."
+    parser.add_argument("-n", "--notify", help=help, default=null)
     args = parser.parse_args()
     config = getattr(__import__("configs", fromlist=[f"cfg_{args.scenario}"]), f"cfg_{args.scenario}")
 
