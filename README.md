@@ -164,6 +164,14 @@ cd ..
 
 Source: https://stackoverflow.com/questions/59006083/how-to-install-portaudio-on-pi-properly
 
+### `dbus-python` not installing prevents `nxbt` from installing
+
+Try the solution on NXBT's repository: https://github.com/Brikwerk/nxbt#i-get-an-error-when-installing-the-dbus-python-package
+
+### Specified version of `numpy` has trouble installing
+
+While the issue's being looked into, it seems removing the version number might fix this.
+
 ## Special thanks
 
 We would like to thank the following people,
